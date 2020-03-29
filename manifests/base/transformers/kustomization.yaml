@@ -48,4 +48,4 @@ resources:
 - keysUriTemp
 - tokenAuthUriTemp
 - licensesUriTemp
-
+- caCertificates
