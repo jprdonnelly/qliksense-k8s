@@ -193,3 +193,13 @@ varReference:
   path: data/tokenAuthUriTemp
 - kind: ConfigMap
   path: data/licensesUriTemp
+- path: spec/template/spec/containers/env/valueFrom/secretKeyRef/name
+  kind: Job
+- path: spec/template/spec/containers/env/valueFrom/configMapKeyRef/name
+  kind: Job
+- path: spec/template/spec/volumes/persistentVolumeClaim/claimName
+  kind: Job
+- path: metadata/name
+  kind: Job
+- path: metadata/name
+  kind: PersistentVolumeClaim

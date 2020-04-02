@@ -51,4 +51,6 @@ patches:
       parserUri: "http://$(PREFIX)-nl-parser:30302"
       dpsUri: "http://$(PREFIX)-data-prep.svc.cluster.local:9072"
       insightsUri: "http://$(PREFIX)-insights:9292"
-      command: echo \"$CUSTOM_CERTS\" >> /mnt/certs/ca-certificates.crt
+      # overrideDefaultCAChain
+      # caCommand: "echo \"$CUSTOM_CERTS\" > /mnt/certs/ca-certificates.crt"
+      caCommand: "echo \"$CUSTOM_CERTS\" >> /mnt/certs/ca-certificates.crt"

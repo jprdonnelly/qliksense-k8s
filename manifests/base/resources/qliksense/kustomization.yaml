@@ -6,6 +6,10 @@ resources:
   - resources
 generators:
   - generators
+resources:
+  - resources
 transformers:
   - secrets
   - configs
+  - ../../transformers/base
+  - transformers

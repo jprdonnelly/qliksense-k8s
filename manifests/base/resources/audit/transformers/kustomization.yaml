@@ -20,10 +20,9 @@ patches:
         natsStreamingClusterId,
         natsUri,
         keysUriTemp,
-        caCertificates,
         mongoDbUri,
-        natsUri,
-        natsStreamingClusterId
+        keysUri,
+        caCertificates,
         )
   patch: |-
     - op: replace

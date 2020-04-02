@@ -1,8 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ca-certificates 
+  name: ca-certificates-(( random.String 5 "[a-z]" ))
 spec:
+  backoffLimit: 4
   template:
     spec:
       containers:
@@ -15,7 +16,7 @@ spec:
         - name: CERTS_COMMAND
           valueFrom:
             configMapKeyRef:
-              key: command
+              key: caCommand
               name: configs 
         - name: CUSTOM_CERTS
           valueFrom:
@@ -30,4 +31,7 @@ spec:
         - name: ca-certificates
           persistentVolumeClaim:
             claimName: ca-certificates
+<<<<<<< HEAD
       backoffLimit: 4
+=======
+>>>>>>> master
