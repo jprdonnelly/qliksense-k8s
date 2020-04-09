@@ -1,0 +1,50 @@
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: precedentsUriCronJob
+  labels:
+    key: precedentsUri
+    kind: CronJob
+enabled: true
+patches:
+- target:
+    kind: CronJob
+  patch: |-
+    apiVersion: batch/v1beta1
+    kind: CronJob
+    metadata:
+      name: component
+    spec:
+      jobTemplate:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: main
+                env:
+                - name: PRECEDENTS_URI
+                  valueFrom:
+                    configMapKeyRef:
+                      key: precedentsUri
+                      name: configs
+- target:
+    kind: ConfigMap
+    name: .*-configs
+  patch: |-
+    apiVersion: v1
+    kind: ConfigMap 
+    metadata:
+      name: component-configs
+    data:
+      precedentsUri: null
+defaults:
+- target:
+    kind: ConfigMap
+    name: .*-configs
+  patch: |-
+    apiVersion: v1
+    kind: ConfigMap 
+    metadata:
+      name: component-configs
+    data:
+      precedentsUri: null
