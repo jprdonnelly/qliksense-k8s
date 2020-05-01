@@ -16,32 +16,32 @@ patches:
   patch: |-
     - op: replace
       path: /enabled
-      value: false
+      value: true
 - target:
     name: storageClassName
     labelSelector: app=qix-datafiles
   patch: |-
     - op: replace
       path: /enabled
-      value: false
+      value: true
 - target:
     name: storageClassName
     labelSelector: app=resource-library
   patch: |-
     - op: replace
       path: /enabled
-      value: false
+      value: true
 - target:
     name: storageClassName
     labelSelector: app=temporary-contents
   patch: |-
     - op: replace
       path: /enabled
-      value: false
+      value: true
 - target:
     name: storageClassName
     labelSelector: app=qliksense
   patch: |-
     - op: replace
       path: /enabled
-      value: false
+      value: true

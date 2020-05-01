@@ -1,0 +1,13 @@
+
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: operator-patch-for-namespace
+enabled: true
+patches:
+- target:
+    kind: NamespaceTransformer
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: default
