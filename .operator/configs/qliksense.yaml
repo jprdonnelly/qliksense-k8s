@@ -1,0 +1,26 @@
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: qliksense-generated-operator-configs
+enabled: true
+patches:
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: qliksense-configs
+    data:
+      acceptEULA: "yes"
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=qliksense
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: qliksense-configs
+    data:
+      storageClassName: nfs-dynamic
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=qliksense
