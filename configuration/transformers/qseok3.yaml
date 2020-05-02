@@ -1,0 +1,16 @@
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: release-template
+enabled: true
+patches:
+- target:
+    name: release
+    kind: LabelTransformer
+  patch: |-
+    apiVersion: builtin
+    kind: LabelTransformer
+    metadata:
+      name: release
+    labels:
+      release: qseok3

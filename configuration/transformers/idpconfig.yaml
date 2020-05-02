@@ -1,0 +1,32 @@
+patches:
+- patch: |-
+    apiVersion: v1
+    kind:Secret
+    metadata:
+      name: identity-providers-secrets
+    stringData:
+      idpConfigs: |-
+        [ {
+            "claimsMapping:
+              "name: [
+                "name",
+                "preferred_username"
+              ]
+              sub: ["preferred_username"]
+              groups: ["groupmemberships"]
+            },
+            "clientId": "browntown",
+            "clientSecret": "a930b11a-e477-4241-ab94-f7f90d10dca1",
+            "hostname": "qseok3.browntown.local",
+            "issuerConfig": {
+              "authorization_endpoint": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/auth",
+              "end_session_endpoint": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/logout",
+              "introspection_endpoint": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/token/introspect",
+              "issuer": "http://keycloak.browntown.local/auth/realms/browntown",
+              "jwks_uri": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/certs",
+              "token_endpoint": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/token",
+              "userinfo_endpoint": "http://keycloak.browntown.local/auth/realms/browntown/protocol/openid-connect/userinfo"
+            },
+            "realm": "browntown"
+          }
+        ]
