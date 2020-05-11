@@ -1,0 +1,46 @@
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: base-generated-operator-configs
+enabled: true
+patches:
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: base-configs
+    data:
+      idpHostName: keycloak.browntown.local
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=base
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: base-configs
+    data:
+      realmName: qseok
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=base
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: base-configs
+    data:
+      qlikSenseDomain: qseok3.browntown.local
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=base
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: base-configs
+    data:
+      clientSecret: e660ebce-ba63-41de-aa99-c403dd6f9213
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=base

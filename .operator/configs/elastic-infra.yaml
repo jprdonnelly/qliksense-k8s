@@ -1,0 +1,16 @@
+apiVersion: qlik.com/v1
+kind: SelectivePatch
+metadata:
+  name: elastic-infra-generated-operator-configs
+enabled: true
+patches:
+- patch: |
+    apiVersion: qlik.com/v1
+    kind: SuperConfigMap
+    metadata:
+      name: elastic-infra-configs
+    data:
+      qlikSenseIp: 192.168.2.58
+  target:
+    kind: SuperConfigMap
+    labelSelector: app=elastic-infra
