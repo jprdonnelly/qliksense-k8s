@@ -1,0 +1,40 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: qseok-day0
+  region: us-east-2
+
+managedNodeGroups:
+  - name: managed-ng-public
+    # Instance Size ~ gke-demo.
+    # r5ad.2xlarge == 8 vCPU | 64 GB RAM
+    instanceType: r5ad.2xlarge
+    minSize: 3
+    desiredCapacity: 4
+    maxSize: 4
+    availabilityZones: ["us-east-2a", "us-east-2b"]
+    volumeSize: 100
+    privateNetworking: false
+    ssh: # import default public key
+      allow: true
+      # publicKeyPath: ~/.ssh/ec2_id_rsa.pub
+      # new feature for restricting SSH access to certain AWS security group IDs
+      # sourceSecurityGroupIds: ["sg-00241fbb12c607007"]
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        certManager: true
+        efs: true
+        fsx: true
+        autoScaler: false
+        cloudWatch: false
+        albIngress: false
+    # secretsEncryption:
+      # keyARN: "arn:aws:kms:us-east-2:000000000000:key/00000000-0000-0000-0000-000000000000"
+    # cloudWatch:
+    #   clusterLogging:
+    #     enableTypes: <string[]>

@@ -1,0 +1,20 @@
+{
+  "Comment": "Create QSEoK and Keycloak Route 53 RecordSet",
+  "Changes": [ {
+            "Action": "CREATE",
+            "ResourceRecordSet": {
+              "Name": "$QLIKSENSE_HOST.$DOMAIN",
+              "Type": "A",
+              "TTL": 300,
+              "ResourceRecords": [{"Value": "QLIKSENSE_IP"}]
+            }},
+{
+            "Action": "CREATE",
+            "ResourceRecordSet": {
+              "Name": "$KEYCLOAK_HOST.$DOMAIN",
+              "Type": "A",
+              "TTL": 300,
+              "ResourceRecords": [{"Value": "KEYCLOAK_IP"}]
+            }}
+]
+}
