@@ -53,6 +53,7 @@ aws route53 create-hosted-zone --name $QLIKSENSE_HOST.$DOMAIN --caller-reference
 ## Create Keycloak Address and set to variable with jq
 KEYCLOAK_IP=$(aws ec2 allocate-address | jq -r '.PublicIp'|sed -e 's/\"//g')
 aws route53 create-hosted-zone --name $KEYCLOAK_HOST.$DOMAIN --caller-reference $KEYCLOAK_HOST | jq -r '.HostedZone.Id,.DelegationSet.NameServers[]'
+
 ###
 # **************** Must update registrar to point to new NS
 
