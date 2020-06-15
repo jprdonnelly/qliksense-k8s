@@ -11,26 +11,20 @@ transformers:
 patches:
 - target:
     labelSelector: >-
-      key notin ( 
+      key notin (
+        imageRegistry, 
         featureFlagsUri,
         ingressClass,
+        ingressAuthUrl,
         natsUri,
         natsStreamingClusterId,
         keysUri,
-        mongoDbUri,
-        spacesUri,
-        precedentsUri,
-        tokenAuthUri
+        edgeAuthUri,
+        precedentsUriCronJob,
+        mongodbUri,
+        caCertificates,
+        spacesUri
       )
-  patch: |-
-    - op: replace
-      path: /enabled
-      value: false
-    - op: replace
-      path: /default
-      value: true
-- target:
-    labelSelector: "key=precedentsUri,kind=Deployment"
   patch: |-
     - op: replace
       path: /enabled

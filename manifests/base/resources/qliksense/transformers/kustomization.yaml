@@ -8,9 +8,23 @@ transformers:
 - ../../../../../configuration/transformers
 #Disable all transformers except these
 patches:
+#- target:
+#    labelSelector: >-
+#      key in (
+#        imageRegistry,
+#        storageClassName
+#        )
+#  patch: |-
+#    - op: replace
+#      path: /enabled
+#      value: true
+#    - op: replace
+#      path: /default
+#      value: false
 - target:
     labelSelector: >-
       key notin (
+        imageRegistry,
         storageClassName
         )
   patch: |-

@@ -12,16 +12,17 @@ patches:
 - target:
     labelSelector: >-
       key notin (
-        ingressClass,
-        tokenAuthUri,
-        pdsUri,
-        featureFlagsUri,
+        imageRegistry,
         ingressClass,
         ingressAuthUrl,
+        edgeAuthUri,
+        policyDecisionsUri,
+        featureFlagsUri,
         natsStreamingClusterId,
         natsUri,
         keysUri,
-        mongoDbUri
+        mongodbUri,
+        caCertificates
         )
   patch: |-
     - op: replace
@@ -31,7 +32,7 @@ patches:
       path: /default
       value: true
 # - target:
-#      name: pdsUri
+#      name: policyDecisionsUri
 #   patch: |-
 #     - op: replace
 #       path: /enabled

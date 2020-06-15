@@ -6,6 +6,7 @@ resources:
 - ../../../transformers
 - redisUri
 - redisPassword
+- redisEncryptionKey
 transformers:
 - ../../../../../.operator/transformers
 - ../../../../../configuration/transformers
@@ -14,8 +15,10 @@ patches:
     kind: SelectivePatch
     labelSelector: >-
       key notin (
+        imageRegistry,
         dcaasRedisPassword,
-        dcaasRedisUri
+        dcaasRedisUri,
+        dcaasRedisEncryptionKey
       )
   patch: |-
     - op: add 
@@ -24,15 +27,17 @@ patches:
 - target:
     labelSelector: >-
       key notin (
+        imageRegistry,
         dcaasRedisPassword,
         dcaasRedisUri,
+        dcaasRedisEncryptionKey,
         featureFlagsUri,
         ingressClass,
         ingressAuthUrl,
         keysUri,
         spacesUri,
-        caCertificates,
-        qixDataConnectionUri
+        qixDataConnectionUri,
+        dataConnectionsUri
         )
   patch: |-
     - op: replace

@@ -12,16 +12,20 @@ patches:
 - target:
     labelSelector: >-
       key notin (
-        pdsUri,
+        imageRegistry,
+        policyDecisionsUri,
+        edgeAuthUri,
         collectionsUri,
         featureFlagsUri,
+        tenantsUri,
         encryptionUri,
         reportingUri,
         ingressClass,
         ingressAuthUrl,
         keysUri,
+        engineUri,
         caCertificates,
-        mongoDbUri
+        mongodbUri
         )
   patch: |-
     - op: replace
@@ -31,7 +35,7 @@ patches:
       path: /default
       value: true
 - target:
-    labelSelector: "key=tokenAuthUri,kind=Deployment"
+    labelSelector: "key=edgeAuthUri,kind=Deployment"
   patch: |-
     - op: replace
       path: /enabled

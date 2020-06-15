@@ -11,23 +11,20 @@ transformers:
 patches:
 - target:
     labelSelector: >-
-      key notin ( 
+      key notin (
+        imageRegistry, 
         ingressClass,
         ingressAuthUrl,
         natsUri,
         natsStreamingClusterId,
         featureFlagsUri,
-        authJwksUri, 
-        tokenUri, 
-        accessControlPdsUri, 
-        mongoDbUri,
+        mongodbUri,
+        caCertificates,
         groupsUri, 
         quotasUri,
-        tokenAuthUri,
-        tokenAuthPrivateKey,
-        tokenAuthPrivateKeyId,
+        edgeAuthUri,
         keysUri,
-        pdsUri
+        policyDecisionsUri
       )
   patch: |-
     - op: replace

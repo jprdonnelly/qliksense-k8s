@@ -11,9 +11,12 @@ transformers:
 patches:
 - target:
     labelSelector: >-
-      key notin ( 
+      key notin (
+        imageRegistry, 
         ingressClass,
-        dpsUri
+        ingressAuthUrl,
+        dataPrepUri,
+        nlAppSearchUri
       )
   patch: |-
     - op: replace

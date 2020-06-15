@@ -12,7 +12,8 @@ patches:
 - target:
     labelSelector: >-
       key notin (
-        tokenAuthUri,
+        imageRegistry,
+        edgeAuthUri,
         ingressClass,
         ingressAuthUrl,
         keysUri,

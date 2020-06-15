@@ -11,7 +11,8 @@ patches:
 - target:
     labelSelector: >-
       key notin (
-        tokenAuthUri,
+        imageRegistry,
+        edgeAuthUri,
         featureFlagsUri,
         ingressClass,
         ingressAuthUrl,
@@ -37,7 +38,7 @@ patches:
       path: /default
       value: true
 # - target:
-#      name: pdsUri
+#      name: policyDecisionsUri
 #   patch: |-
 #     - op: replace
 #       path: /enabled

@@ -5,7 +5,19 @@ metadata:
   labels:
     key: ingressClass
 enabled: true
+default: true
 patches:
+- target:
+    kind: SearchReplace
+    labelSelector: key=ingressClass
+  patch: |-
+    apiVersion: qlik.com/v1
+    kind: SearchReplace
+    metadata:
+      name: ingressClass
+    replaceWithObjRef: null
+    replace: $(INGRESS_CLASS)
+defaults:
 - target:
     kind: Ingress 
   patch: |-
@@ -15,4 +27,3 @@ patches:
       name: component
       annotations:
         kubernetes.io/ingress.class: $(INGRESS_CLASS)
-

@@ -11,13 +11,17 @@ transformers:
 patches:
 - target:
     labelSelector: >-
-      key notin ( 
-        parserUri,
-        dpsUri,
-        mongoDbUri,
+      key notin (
+        imageRegistry, 
+        nlParserUri,
+        dataPrepUri,
+        mongodbUri,
         keysUri,
         ingressClass,
+        ingressAuthUrl,
         caCertificates,
+        reportingUri,
+        qixSessionsUri
       )
   patch: |-
     - op: replace
