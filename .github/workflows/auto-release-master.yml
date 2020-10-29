@@ -34,7 +34,7 @@ jobs:
           qseok_version=$(yq r manifests/base/transformers/release/annotations.yaml 'annotations."app.kubernetes.io/version"')
           echo "::set-env name=QSEOK_VERSION::${qseok_version}"
           echo "::set-env name=SHORT_SHA::${GITHUB_SHA::7}"
-      - name: Create a lightweight  tag
+      - name: Create a lightweight tag
         uses: K-Phoen/semver-release-action@master
         with:
           release_branch: master
@@ -42,7 +42,7 @@ jobs:
           tag: v${{ env.QSEOK_VERSION }}-${{ env.SHORT_SHA }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create a githib release
+      - name: Create a github release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
